@@ -38,7 +38,7 @@ abstract class BaseDialogFragment<B : ViewDataBinding> : DialogFragment() {
         return object : Dialog(activity!!, theme) {
             override fun onBackPressed() {
                 this@BaseDialogFragment.onBackPressed()
-                dialog?.window?.setWindowAnimations(R.style.FragmentAnimation)
+                applyAnimation()
                 postDelay(50) {
                     super.onBackPressed()
                 }
@@ -93,10 +93,6 @@ abstract class BaseDialogFragment<B : ViewDataBinding> : DialogFragment() {
         if (isFullScreen || isFullScreenHideStatusBar) {
             dialog?.window?.setWindowAnimations(0)
         }
-    }
-
-    companion object {
-        val TAG = BaseDialogFragment::class.java.simpleName
     }
 }
 
